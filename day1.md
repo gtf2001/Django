@@ -74,6 +74,8 @@ ORM：
 	# 'DIRS': [BASE_DIR / 'templates']
 代替
 	'DIRS': [Path(BASE_DIR, 'templates')]
+或
+	'DIRS': [os.path.join(BASE_DIR,'templates')]
 
 3. 创建一个app，并且挂载app
 	python manage.py startapp modelapp
