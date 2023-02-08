@@ -64,9 +64,17 @@ ORM：
                 'PASSWORD': '123456'# 密码
             }
         }
+	
+问题1
         # 如果出现了版本不兼容的问题，则添加以下配置
         from django.db.backends.mysql.base import DatabaseWrapper
 		DatabaseWrapper.data_types['DateTimeField'] = "DateTime"
+问题2
+	#
+	# 'DIRS': [BASE_DIR / 'templates']
+代替
+	'DIRS': [Path(BASE_DIR, 'templates')]
+
 3. 创建一个app，并且挂载app
 	python manage.py startapp modelapp
 	在settings.py中，INSTALLED_APPS = [XXXXX,'modelapp']
