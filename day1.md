@@ -89,6 +89,7 @@ ORM：
 		python manage.py makemigrations # 生成一个记录文件，此时模型并没有移植到数据库中
 		python .\manage.py migrate
 		
+可能会出现要求mysql版本5.7，需要将Django降级为3.0.6
 ~~~
 
 ~~~markdown
