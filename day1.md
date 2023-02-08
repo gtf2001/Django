@@ -83,6 +83,8 @@ ORM：
         class User(models.Model):
             username = models.CharField(max_length=20)
             password = models.CharField(max_length=20)
+	    class Meta:
+        	db_table = 'users'
 5. 执行迁移操作
 		python manage.py makemigrations # 生成一个记录文件，此时模型并没有移植到数据库中
 		python .\manage.py migrate
