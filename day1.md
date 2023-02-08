@@ -92,6 +92,25 @@ ORM：
 		python .\manage.py migrate
 		
 可能会出现要求mysql版本5.7，需要将Django降级为3.0.6
+
+6. 配置URL路径
+在根url.py中导入include
+	from django.urls import path,include
+在path中增加
+    	path('emsapp/', include('emsapp.urls'))
+在app目录中自行创建一个urls.py
+	from django.urls import path
+	from emsapp import views
+	urlpatterns = [
+		...  # 配置URL
+    		path('addEmp/',views.show_addEmp),
+		...
+	]
+	
+7. settings.py中
+	ALLOWED_HOSTS = ['*']	 #允许访问ip
+	STATIC_URL = '/static/'   #静态img/css等路径，在app中创建static文件夹
+
 ~~~
 
 ~~~markdown
