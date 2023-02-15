@@ -18,6 +18,42 @@
 	pip install pillow
 ~~~
 
+~~~python
+import random
+import string
+from captcha.image import ImageCaptcha
+def get_captcha(request):
+    # 生成随机码
+    code = ''.join(random.sample(string.digits + string.ascii_letters, 4))
+    print(code)
+    利用chaptcha生成噪点图片
+    chaptcha = ImageCaptcha()
+    img = chaptcha.generate(code)
+    request.session['code'] = code
+    return HttpResponse(img, 'image/png')
+~~~
+~~~html
+# urls.py里需要配置路由
+# 前端html需要添加链接
+<script>
+function changecaptcha() {
+    var img = document.getElementById('num');
+    img.src = "{% url 'get_captcha' %}" + "?" + new Date().getTime();
+    console.log(new Date().getTime());
+}
+</script>
+<tr>
+<td valign="middle" align="right">
+    验证码:
+    <img id="num" src="{% url 'get_captcha' %}"/>
+    <a href="javascript:;" onclick="changecaptcha()">换一张</a>
+</td>
+<td valign="middle" align="left">
+    <input type="text" class="inputgri" name="number"/>
+</td>
+</tr>
+~~~
+
 ### 2、 使用步骤
 
 验证码本质上是生成一个带有随机码的图片，将这个图片在form表单中显示即可
