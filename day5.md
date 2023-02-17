@@ -189,6 +189,7 @@ def addEmp_logic(request):
 
 ~~~markdown
 1. 第一步：初始化一个分页器对象
+	from django.core.paginator import Paginator
 	pagtor = Paginator(object_list=要分页的数据的‘列表’-可迭代对象,per_page=每页显示的条数)
 ~~~
 
