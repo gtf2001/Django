@@ -26,7 +26,7 @@ def get_captcha(request):
     # 生成随机码
     code = ''.join(random.sample(string.digits + string.ascii_letters, 4))
     print(code)
-    利用chaptcha生成噪点图片
+    # 利用chaptcha生成噪点图片
     chaptcha = ImageCaptcha()
     img = chaptcha.generate(code)
     request.session['code'] = code
